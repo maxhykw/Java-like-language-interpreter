@@ -1,0 +1,107 @@
+var point p;
+var rectangle r;
+var int globalVar;
+var testLocal t;
+var pointOperations po;
+var int localVar;
+
+
+// méthodes simples
+class point {
+  attribute int x;
+  attribute int y;
+
+  method void constructor(int a, int b) {
+    this.x = a;
+    this.y = b;
+  }
+
+  method int somme() {
+    return this.x + this.y;
+  }
+
+  method int produit() {
+    return this.x * this.y;
+  }
+
+  method int incrementX() {
+    this.x = this.x + 1;
+    return this.x;
+  }
+}
+
+// méthode utilisant une variable locale
+class rectangle {
+  attribute int width;
+  attribute int height;
+
+  method void constructor(int w, int h) {
+    this.width = w;
+    this.height = h;
+  }
+
+  method int area() {
+    var int tempArea; 
+    tempArea = this.width * this.height;
+    return tempArea;
+  }
+
+  method int perimeter() { return 2 * (this.width + this.height); }
+}
+
+// masquage de variable
+class testLocal {
+  attribute int x;
+
+  method int somme() {
+    var int x; // Masque l'attribut
+    x = 10;
+    return x + this.x;
+  }
+}
+
+// pour les appels imbriqués de méthodes
+class pointOperations {
+  attribute int value;
+
+  method void constructor(int v) {
+    this.value = v;
+  }
+
+  method int doubleValue() {
+    return this.value * 2;
+  }
+
+  method int addDoubleValue(int y) {
+    return this.doubleValue() + y;
+  }
+}
+
+main {
+  // test méthodes simples
+  p = new point(2, 1);
+  print(p.somme());      // 3
+  print(p.produit());    // 2
+  print(p.incrementX()); // 3
+  print(p.somme());      // 4
+
+  // test variables locales dans les méthodes
+  r = new rectangle(4, 5);
+  print(r.area());        // 20
+  print(r.perimeter());   // 18
+
+  // test variable locale masquant un attribut
+  t = new testLocal;
+  t.x = 5;
+  print(t.somme());  // 15 (10 + 5)
+
+  // test appels imbriqués de méthodes
+  po = new pointOperations(3);
+  print(po.addDoubleValue(4)); // 10 (2*3 + 4)
+
+  // test interactions entre variables locales et globales
+  globalVar = 3;
+  localVar = globalVar + 5;    // utiliser la variable globale
+  globalVar = 10;              // MaJ de la variable globale
+  print(localVar + globalVar); // 18 (3 + 5 + 10)
+}

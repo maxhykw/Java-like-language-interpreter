@@ -1,0 +1,53 @@
+var int[] arr;
+var bool[] arr_bool;
+var int[][] arr_2d;
+var int x, y, z;
+var bool x_b, y_b;
+
+main {
+  // Test de tableau d'entiers
+  arr = new int[4];    
+
+  arr[0] = 10;
+  arr[1] = 20;
+  arr[2] = 30;
+
+  x = arr[0];
+  y = arr[1];
+  z = arr[2];
+
+  print(x); // 10
+  print(y); // 20
+  print(z); // 30
+  
+
+  // Test de tableau de booléens
+  arr_bool = new bool[2]; 
+
+  arr_bool[0] = true;
+  arr_bool[1] = false;
+
+  x_b = arr_bool[0];
+  y_b = arr_bool[1]; // le sujet ne permet pas de print des booléens 
+
+
+  // Test de tableau de tableaux d'entiers
+  arr_2d = new int[][2]; 
+
+  arr_2d[0] = new int[3];
+  arr_2d[1] = new int[2];
+
+  //arr_2d[0][0] = 100; // fonctionne pas 
+  //arr_2d[0][1] = 200;
+  //arr_2d[0][2] = 300;
+
+  //arr_2d[1][0] = 400;
+  //arr_2d[1][1] = 500;
+
+  // Erreurs 
+  // arr[1] = true;       // Type mismatch dans l'assignation
+  // arr_bool[1] = 1;     // De même
+  // x = arr[true];       // Index non-entier
+  // print(arr[3]);       // Valeur non initialisée 
+  // arr = 42;            // Assignation de tableau à un entier
+}

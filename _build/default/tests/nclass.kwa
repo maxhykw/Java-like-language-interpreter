@@ -1,0 +1,64 @@
+var segment s;
+var point p;
+var point temp;
+var segment s2;
+
+class point {
+  attribute int x;
+  attribute int y;
+}
+
+class segment {
+  attribute point a;
+  attribute point b;
+}
+
+main {
+  // initialisation simple
+  p = new point;
+  p.x = 1;
+  p.y = 2;
+
+  // test d'assignation directe
+  s = new segment;
+  s.a = p;
+  s.b = new point;
+  s.b.x = 3;
+
+  // test d'assignation indirecte et de modification
+  p = s.b;
+  p.y = 4;
+
+  // test d'accès croisé entre les objets
+  print(s.a.x + s.a.y + s.b.x + s.b.y); // 10
+
+  // test avec champs non initialisés
+  temp = new point;
+  // print(temp.x); // Null donc lance une Error
+  // print(temp.y); // Null donc lance une Error
+
+  // test de modification d'attributs après copie de référence
+  temp = s.a; // temp et s.a pointent vers le même objet
+  temp.x = 5;
+  print(s.a.x); // 5 (modification reflétée)
+
+  // test de création / utilisation en cascade
+  s = new segment;
+  s.a = new point;
+  s.a.x = 7;
+  s.a.y = 8;
+  s.b = new point;
+  s.b.x = 2;
+  s.b.y = 3;
+  print(s.a.x + s.a.y + s.b.x + s.b.y); // 20
+
+  // objets multiples indépendants
+  s2 = new segment;
+  s2.a = new point;
+  s2.b = new point;
+  s2.a.x = 10;
+  s2.a.y = 20;
+  s2.b.x = 30;
+  s2.b.y = 40;
+  print(s2.a.x + s2.a.y + s2.b.x + s2.b.y); // 100
+}

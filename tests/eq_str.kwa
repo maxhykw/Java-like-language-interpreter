@@ -1,0 +1,73 @@
+var int a, b, c;
+var bool p, q;
+var int[] arrA, arrB;
+var int[][] arr2DA, arr2DB;
+
+main {
+  // égalité structurelle de deux entiers identiques
+  a = 42;
+  b = 42;
+  if (a === b) {
+    print(1);  // 1
+  } else {
+    print(0);
+  }
+
+  // inégalité structurelle de deux entiers différents
+  c = 43;
+  if (a =/= c) {
+    print(1);  // 1
+  } else {
+    print(0);
+  }
+
+  // égalité de deux booléens identiques
+  p = true;
+  q = true;
+  if (p === q) {
+    print(1);  // 1
+  } else {
+    print(0);
+  }
+
+  // inégalité de deux booléens différents
+  q = false;
+  if (p =/= q) {
+    print(1);  // 1
+  } else {
+    print(0);
+  }
+
+  // égalité de deux tableaux d'entiers pareils
+  arrA = new int[2];
+  arrB = new int[2];
+  arrA[0] = 10;
+  arrA[1] = 20;
+  arrB[0] = 10;
+  arrB[1] = 20;
+  if (arrA === arrB) {
+    print(1);  // 1
+  } else {
+    print(0);
+  }
+
+  // inégalité de deux tableaux d'entiers différents
+  arrB[1] = 30;
+  if (arrA =/= arrB) {
+    print(1);  // 1
+  } else {
+    print(0);
+  }
+
+  // égalité de deux tableaux 2D identiques en structure 
+  arr2DA = new int[][1];
+  arr2DB = new int[][1];
+  arr2DA[0] = new int[2];
+  arr2DB[0] = new int[2];
+
+  if (arr2DA === arr2DB) {
+    print(1);  // 1
+  } else {
+    print(0);
+  }
+}

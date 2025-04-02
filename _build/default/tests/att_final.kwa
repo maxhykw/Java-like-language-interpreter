@@ -1,0 +1,50 @@
+var point p1;
+var point p2;
+
+class point {
+  attribute final int x;
+  attribute int y;
+
+  method void constructor(int x, int y) {
+    this.x = x; // x peut être affecté ici dans le constructeur
+    this.y = y; 
+  }
+  
+  // x est final donc ne peut pas être modifié en dehors du constructeur
+  method void setX(int newX) {
+    this.x = newX; 
+  }
+
+  // y n'est pas final donc peut être modifié
+  method void setY(int newY) {
+    this.y = newY; 
+  }
+}
+
+main {
+  p1 = new point(1, 2); 
+  print(p1.x); // 1
+  print(p1.y); // 2
+  
+  // Modification de y (non final)
+  p1.setY(5);           
+  print(p1.y); // 5
+  
+  // Test avec un deuxième objet
+  p2 = new point(10, 20);
+  print(p2.x); // 10
+  print(p2.y); // 20
+  
+  p2.setY(30);
+  print(p2.y); // p2.y = 30
+
+  // p1.setX(100); // ERREUR, x est final
+
+  // p1 n'est pas affecté par les changements sur p2
+  print(p1.x); // 1
+  print(p1.y); // 5
+
+  // p2 n'est pas affecté par les changements sur p1
+  print(p2.x); // 10
+  print(p2.y); // 30
+}

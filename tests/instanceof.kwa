@@ -1,0 +1,43 @@
+var a obj_a;
+var b obj_b;
+var c obj_c;
+
+class a { }
+class b extends a { }
+class c { }
+
+main {
+  obj_a = new a;
+  obj_b = new b;
+  obj_c = new c;
+  
+  if (obj_a instanceof a) {
+    print(1); // 1
+  } else {
+    print(0);
+  }
+
+  if (obj_b instanceof a) {
+    print(1); // 1
+  } else {
+    print(0);
+  }
+
+  if (obj_c instanceof a) {
+    print(1); 
+  } else {
+    print(0); // 0
+  }
+
+  if (obj_a instanceof c) {
+    print(1); 
+  } else {
+    print(0); // 0
+  }
+
+  if (obj_a instanceof b) {
+    print(1);  
+  } else {
+    print(0); // 0
+  }
+}

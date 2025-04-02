@@ -1,0 +1,24 @@
+var int X;
+var int y = 42;
+var int z;
+
+main {
+  // Test 1: Missing semicolon after variable declaration
+  var int a
+
+  // Test 2: Missing semicolon after variable declaration with initialization
+  var int b = 10
+
+  // Test 3: Missing semicolon after print statement
+  print(x)
+
+  // Test 4: Missing semicolon after assignment
+  x = 10
+
+  // Test 5: Missing semicolon after expression
+  x + 1
+
+  // Test 6: Missing semicolon after return statement
+  return x
+
+}

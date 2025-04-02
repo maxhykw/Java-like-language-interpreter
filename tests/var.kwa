@@ -1,0 +1,34 @@
+var int x;
+var int y;
+var int z;
+var int non_init;
+
+main {
+  // affectations simples
+  x = 1;
+  y = 6;
+  x = x + 2; 
+  y = y * (x + 4); 
+  print(y); // 6 * (3 + 4) = 42
+
+  // combinaison de plusieurs variables
+  x = 10;
+  y = 10;
+  z = 10;
+  x = x + y - z; 
+  print(x); // 10 + 10 - 10 = 10     
+
+  // réutilisation des variables
+  z = y * x + z;  
+  print(z); // 10 * 10 + 10 = 110
+
+  // mise à jour incrémentale
+  x = 0;
+  x = x + 1; // 0 + 1
+  x = x * 5; // 1 * 5 
+  x = x - 2; // 5 - 2
+  print(x);  // = 3
+
+  // variable non initialisée 
+  // print(non_init); // Null donc lance une Error 
+}

@@ -1,0 +1,48 @@
+var int a;
+var int n;
+var int acc;
+var int x;
+
+main {
+  a = 2;
+  n = 9;
+  acc = 1;
+  while (n != 0) {
+    if (n%2 != 0) { acc = a*acc; } else {}
+    a = a*a;
+    n = n/2;
+  }
+  print(acc); // 2^9 = 512
+
+  // if-else sans boucle
+  x = 5;
+  if (x > 10) { 
+    print(100); 
+  } else { 
+    print(200); 
+  }
+
+  // while avec condition qui devient fausse rapidement
+  x = 3;
+  while (x > 0) {
+    print(x); // 3, 2, 1
+    x = x - 1;
+  }
+
+  // if imbriqué
+  x = 4;
+  if (x > 2) {
+    if (x % 2 == 0) {
+      print(300); // 300
+    } else {
+      print(400);
+    }
+  } else {
+    print(500);
+  }
+
+  // test de boucle infinie (commenté pour éviter le blocage)
+  // while (1 != 0) {
+  //   print(0);
+  // }
+}

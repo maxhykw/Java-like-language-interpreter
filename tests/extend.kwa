@@ -1,0 +1,101 @@
+var paire p;
+var paire pt;
+var triple t;
+var tripleMasque t1;
+var paire p2;
+var triple t2;
+var triplePartiel t3;
+var paire p5;
+
+class paire {
+  attribute int x;
+  attribute int y;
+
+  method void constructor(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  method int somme() {
+    return this.x + this.y;
+  }
+}
+
+class triple extends paire {
+  attribute int z;
+
+  method void constructor(int x, int y, int z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+
+  method int somme() {
+    return this.x + this.y + this.z;
+  }
+
+  method int produit() {
+    return this.x * this.y * this.z;
+  }
+}
+
+// Héritage avec masquage d'attributs
+class tripleMasque extends paire {
+  attribute int x; 
+  attribute int z;
+
+  method void constructor(int x, int y, int z) {
+    this.x = x;
+    this.y = y; 
+    this.z = z;
+  }
+
+  method int somme() {
+    return this.x + this.y + this.z;
+  }
+}
+
+class triplePartiel extends paire {
+  attribute int z;
+
+  method void constructor(int z) {
+    this.z = z;
+  }
+
+  method int somme() {
+    return this.x + this.y + this.z;
+  }
+}
+
+
+main {
+  p = new paire(1, 2);
+  t = new triple(3, 4, 5);
+  print(p.somme());     // 3
+  print(t.somme());     // 12
+  print(t.produit());   // 60
+  pt = new triple(1, 2, 3);
+  print(pt.somme());    // 6
+
+
+  // Héritage avec masquage d'attributs
+  t1 = new tripleMasque(2, 3, 4);
+  print(t1.somme()); // 9
+
+
+  // appel d'une méthode définie dans la classe parent
+  p2 = new paire(1, 2);
+  t2 = new triple(3, 4, 5);
+  print(p2.somme());    // 3S
+  print(t2.somme());    // 12
+
+
+  // attributs partiellement initialisés
+  t3 = new triplePartiel(5);
+  // print(t3.somme()); // Erreur si x et y ne sont pas initialisés
+
+
+  // Instanciation d'une sous-classe via une variable parent
+  p5 = new triple(1, 2, 3);
+  print(p5.somme());   // 6
+}

@@ -1,0 +1,38 @@
+// Cas 1 : variable globale (initialisée une fois au début)
+var int globalVar = 42;
+var test obj1;
+var test obj2;
+
+class test {
+  // Cas 3 : attribut d'une classe (initialisé pour chaque nouvelle instance)
+  attribute int attr = 10;
+
+  // Méthode constructeur
+  method void constructor() {
+    print(111111111); // Pour vérifier son exécution
+  }
+
+  method void display() {
+    // Cas 2 : variable locale (initialisée au début de chaque appel)
+    var int localVar = 5;
+    print(localVar);         // Devrait toujours afficher 5 à chaque appel
+    localVar = localVar + 1; // Modifie localVar uniquement pour cet appel
+    print(this.attr);        // 10 (valeur initiale de l'attribut)
+  }
+}
+
+main {
+  // Test du cas 1
+  print(globalVar); //  42
+  globalVar = globalVar + 10; 
+  print(globalVar); //  52
+
+  // Test du cas 2
+  obj1 = new test();
+  obj1.display(); // 5 puis 10
+  obj1.display(); // 5 puis 10 (localVar réinitialisé, attr reste intact)
+
+  // Test du cas 3
+  obj2 = new test();
+  obj2.display(); // 5 puis 10 (nouvelle instance, attr réinitialisé)
+}
